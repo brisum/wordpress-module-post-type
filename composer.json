@@ -1,0 +1,21 @@
+{
+  "name": "brisum/wordpress-module-post-type",
+  "description": "Wordpress module post type",
+  "keywords": [
+    "wordpress"
+  ],
+  "homepage": "https://github.com/brisum/wordpress-module-post-type",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Oleksandr Manchenko",
+      "email": "omanchenko@brisum.com",
+      "homepage": "http://brisum.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Brisum\\Wordpress\\PostType\\": "src/"
+    }
+  }
+}
