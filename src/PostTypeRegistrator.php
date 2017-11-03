@@ -1,6 +1,6 @@
 <?php
 
-namespace Brisum\Wordpress\PostType\PostType;
+namespace Brisum\Wordpress\PostType;
 
 use Brisum\Wordpress\CustomField\MetaBox;
 use Exception;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Brisum\Wordpress\PostType\PostType;
+namespace Brisum\Wordpress\PostType;
 
 use Exception;
 use WP_Error;
@@ -34,6 +34,31 @@ class Taxonomies
 				/** @var WP_Error $taxonomy */
 				throw new Exception($taxonomy->get_error_message());
 			}
+
+			$filterMethod = $this->generateFilterMethod($name);
+			if (method_exists($this, $filterMethod)) {
+                add_filter("{$name}_rewrite_rules", [$this, $filterMethod]);
+            }
 		}
 	}
+
+    /**
+     * @param string $permastruct
+     * @return string
+     */
+    protected function generateFilterMethod($permastruct)
+    {
+        return 'filter'
+                . ucfirst(preg_replace_callback('/[_-](.)/', [$this, 'replaceFilterMethod'], $permastruct))
+                . 'RewriteRules';
+    }
+
+    /**
+     * @param array $matches
+     * @return string
+     */
+    public function replaceFilterMethod($matches)
+    {
+        return strtoupper($matches[1]);
+    }
 }
